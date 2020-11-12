@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-index',
@@ -7,12 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  title = 'din-app';
+  @Input() title: string
   
   constructor() { }
 
   ngOnInit(): void {
+    this.getTitle()
   }
   
+  getTitle(): void{
+    this.title = 'din-app'
+  }
+
+  test(): void{
+    console.log("Test work!");
+    
+  }
 
 }
