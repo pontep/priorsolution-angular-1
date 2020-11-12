@@ -11,6 +11,10 @@ export class IndexComponent implements OnInit {
   
   constructor() { }
 
+  onAction1(): void{
+    console.log('onAction1');
+    
+  }
   ngOnInit(): void {
     this.getTitle()
   }
