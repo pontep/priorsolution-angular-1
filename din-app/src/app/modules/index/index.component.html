@@ -1,1 +1,78 @@
-<h1 class="mat-h1">Homepage</h1>
+<div>
+  <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 10px">
+    <div fxLayout="column">
+      <div>
+        <h1 class="mat-display-4">Weather Forecast</h1>
+      </div>
+      <div>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input
+              type="text"
+              placeholder="จังหวัด"
+              matInput
+              [formControl]="myControl"
+              [matAutocomplete]="auto"
+              [(ngModel)]="selectedProvince"
+            />
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option
+                *ngFor="let option of filteredOptions | async"
+                [value]="option"
+              >
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </form>
+      </div>
+      <div>
+        <button mat-stroked-button (click)="getForecast()">Forecast</button>
+      </div>
+      <div *ngIf="loading">
+        <mat-progress-bar mode="query"></mat-progress-bar>
+      </div>
+      <div *ngIf="forecast">
+        <mat-card class="example-card">
+          <mat-card-header>
+            <!-- <div mat-card-avatar class="example-header-image"></div> -->
+            <div *ngIf="forecast.cond === 1">
+              <mat-icon>wb_sunny</mat-icon>
+            </div>
+            <div *ngIf="forecast.cond === 2">
+              <mat-icon>wb_cloud</mat-icon>
+            </div>
+            <div *ngIf="forecast.cond === 3">
+              <mat-icon>wb_cloudy</mat-icon>
+            </div>
+            <mat-card-title> {{ forecast.location.province }} </mat-card-title>
+            <mat-card-subtitle> {{ forecast.time }} </mat-card-subtitle>
+          </mat-card-header>
+
+          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+          <mat-card-content>
+            <div>
+              <!-- <mat-icon>thermometer</mat-icon> -->
+              อุณหภูมิ(องศา): {{ forecast.tc }}
+              <!-- <mat-icon>temperature-celsius</mat-icon> -->
+            </div>
+            <div>
+              <!-- <mat-icon>water-percent</mat-icon> -->
+              ความชื้นสัมพัทธเฉลี่ย: {{ forecast.rh }}
+            </div>
+
+            <div class="row">
+              <span>สภาพอากาศ:</span>
+              <p *ngIf="forecast.cond === 1">ปลอดโปร่ง</p>
+              <p *ngIf="forecast.cond === 2">มีเมฆเล็กน้อย</p>
+              <p *ngIf="forecast.cond === 3">มีเมฆมาก</p>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>{{ "full report" | uppercase }}</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

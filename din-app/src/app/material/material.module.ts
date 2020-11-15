@@ -6,6 +6,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatCardModule } from "@angular/material/card";
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 const MaterialComponents = [
   MatFormFieldModule,
@@ -16,7 +20,11 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatAutocompleteModule,
+  ReactiveFormsModule,
+  MatProgressBarModule,
+  MatSelectModule
 ]
 @NgModule({
   imports: [

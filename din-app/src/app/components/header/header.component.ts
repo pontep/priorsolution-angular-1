@@ -9,4 +9,11 @@ export class HeaderComponent  {
 
   @Input() deviceXs: boolean
   @Input() title: string
+
+  handleToHomePage(): void{
+    location.replace('/')
+  }
+  handleToHistoryPage(){
+    location.assign('/history')
+  }
 }
