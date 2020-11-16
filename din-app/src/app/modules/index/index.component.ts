@@ -44,7 +44,7 @@ export class IndexComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value))
     );
-    this.forecast = FORECAST
+    // this.forecast = FORECAST
     
   }
   private _filter(value: string): string[] {
