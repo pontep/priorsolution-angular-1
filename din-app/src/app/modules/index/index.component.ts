@@ -5,7 +5,7 @@ import {map, startWith} from 'rxjs/operators';
 import { WeatherForecast } from 'src/app/models/weatherForecast';
 import { ForecastService } from 'src/app/services/forecast.service';
 import { THAI_PROVINCES } from "../../source/thai-province";
-
+import { FORECAST } from "../../models/mock-forecast";
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -38,16 +38,13 @@ export class IndexComponent implements OnInit {
     console.log(data);
     
   }
-  onAction1(): void{
-    console.log('onAction1');
-    
-  }
   ngOnInit(): void {
     this.getTitle()
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
+    this.forecast = FORECAST
     
   }
   private _filter(value: string): string[] {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import {  MatFormFieldModule } from '@angular/material/form-field';
-import {  MatIconModule } from "@angular/material/icon";
+import {  MatIconModule, MatIconRegistry } from "@angular/material/icon";
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
@@ -10,10 +10,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { DomSanitizer } from '@angular/platform-browser';
 
 const MaterialComponents = [
   MatFormFieldModule,
-  MatIconModule,
   MatSliderModule,
   MatButtonModule,
   MatIconModule,
@@ -24,7 +25,8 @@ const MaterialComponents = [
   MatAutocompleteModule,
   ReactiveFormsModule,
   MatProgressBarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatGridListModule
 ]
 @NgModule({
   imports: [
@@ -34,4 +36,10 @@ const MaterialComponents = [
     MaterialComponents
   ]
 })
-export class MaterialModule { }
+export class MaterialModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer){
+    matIconRegistry.addSvgIconSet(
+      domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg')
+    );
+  }
+ }
