@@ -4,7 +4,7 @@
       <div>
         <h1 class="mat-display-4">Weather Forecast</h1>
       </div>
-      
+
       <div>
         <form>
           <mat-form-field class="max-width">
@@ -45,14 +45,11 @@
         <mat-card class="forecast-card">
           <mat-card-header>
             <div mat-card-avatar>
-              <div *ngIf="forecast.cond === 1">
-                <mat-icon svgIcon="weather-sunny" class="forecast-icon-weather forecast-icon-weather-sunny"></mat-icon>
-              </div>
-              <div *ngIf="forecast.cond === 2">
-                <mat-icon svgIcon="weather-cloudy" class="forecast-icon-weather forecast-icon-weather-cloudy"></mat-icon>
-              </div>
-              <div *ngIf="forecast.cond === 3">
-                <mat-icon svgIcon="weather-partly-cloudy" class="forecast-icon-weather forecast-icon-weather-partly-cloudy"></mat-icon>
+              <div>
+                <mat-icon
+                  [svgIcon]="weatherConditionIcon[forecast.cond]"
+                  class="forecast-icon-weather"
+                ></mat-icon>
               </div>
             </div>
 
@@ -60,29 +57,38 @@
             <mat-card-subtitle> {{ forecast.time }} </mat-card-subtitle>
           </mat-card-header>
 
-          <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
           <mat-card-content>
             <div>
-              <!-- <mat-icon>thermometer</mat-icon> -->
-              <mat-icon svgIcon="thermometer" color="primary" aria-label="อุณหภูมิ(องศา)"></mat-icon><span>{{ forecast.tc }}</span>
-              <!-- <mat-icon>temperature-celsius</mat-icon> -->
+              <mat-icon
+                svgIcon="thermometer"
+                color="primary"
+                aria-label="อุณหภูมิ(องศา)"
+              ></mat-icon
+              ><span>{{ forecast.tc }}</span>
+              &#8451;
             </div>
             <div>
               <!-- <mat-icon>water-percent</mat-icon> -->
-              <mat-icon svgIcon="water-percent" color="primary" aria-label="ความชื้นสัมพัทธเฉลี่ย"></mat-icon><span>{{ forecast.rh }}</span>
+              <mat-icon
+                svgIcon="water-percent"
+                color="primary"
+                aria-label="ความชื้นสัมพัทธเฉลี่ย"
+              ></mat-icon
+              ><span>{{ forecast.rh }} %</span>
             </div>
 
             <div fxLayout="row">
               <span>สภาพอากาศ: &nbsp; </span>
-              <p *ngIf="forecast.cond === 1">ปลอดโปร่ง</p>
+              <!-- <p *ngIf="forecast.cond === 1">ปลอดโปร่ง</p>
               <p *ngIf="forecast.cond === 2">มีเมฆเล็กน้อย</p>
-              <p *ngIf="forecast.cond === 3">มีเมฆมาก</p>
+              <p *ngIf="forecast.cond === 3">มีเมฆมาก</p> -->
+              <p>{{ weatherCondition[forecast.cond] }}</p>
             </div>
-              
-           
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button color="primary">{{ "full report" | uppercase }}</button>
+            <button mat-button color="primary">
+              {{ "full report" | uppercase }}
+            </button>
           </mat-card-actions>
         </mat-card>
       </div>
