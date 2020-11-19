@@ -21,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { HistoryComponent } from './modules/history/history.component';
+import { WeatherForecastComponent } from './modules/weather-forecast/weather-forecast.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { HistoryComponent } from './modules/history/history.component';
     FooterComponent,
     ForecastFormComponent,
     DashboardComponent,
-    HistoryComponent
+    HistoryComponent,
+    WeatherForecastComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { HistoryComponent } from './modules/history/history.component';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

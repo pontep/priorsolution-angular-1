@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+import { User } from './models/user';
+import { AuthenticationService } from './services/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +10,15 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy{
-
+  currentUser: User
+  
   title = 'dinny weather'
   mediaSub: Subscription
   deviceXs: boolean
 
-  constructor(public mediaObserver: MediaObserver){
+  constructor(public mediaObserver: MediaObserver, private authenticationService: AuthenticationService){
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
-
-  
 
   ngOnInit(): void {
     this.mediaSub = this.mediaObserver.media$.subscribe((result: MediaChange) => {

@@ -16,4 +16,7 @@ export class HeaderComponent  {
   handleToHistoryPage(){
     location.assign('/history')
   }
+  handleToWeatherForecastPage(){
+    location.assign('/weather-forecast')
+  }
 }

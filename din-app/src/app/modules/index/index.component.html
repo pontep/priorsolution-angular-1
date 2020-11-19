@@ -1,97 +1,15 @@
 <div>
   <div fxLayout="row" fxLayoutAlign="center center" style="margin-top: 10px">
     <div fxLayout="column">
-      <div>
-        <h1 class="mat-display-4">Weather Forecast</h1>
-      </div>
-
-      <div>
-        <form>
-          <mat-form-field class="max-width">
-            <div>
-              <input
-                type="text"
-                placeholder="จังหวัด"
-                matInput
-                [formControl]="myControl"
-                [matAutocomplete]="auto"
-                [(ngModel)]="selectedProvince"
-              />
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option
-                  *ngFor="let option of filteredOptions | async"
-                  [value]="option"
-                >
-                  {{ option }}
-                </mat-option>
-              </mat-autocomplete>
-            </div>
-          </mat-form-field>
-        </form>
-      </div>
-
-      <button
-        mat-stroked-button
-        (click)="getForecast()"
-        color="primary"
-        class="forecast-button"
-      >
-        Forecast
-      </button>
-      <div *ngIf="loading">
-        <mat-progress-bar mode="query"></mat-progress-bar>
-      </div>
-      <div *ngIf="forecast">
-        <mat-card class="forecast-card">
-          <mat-card-header>
-            <div mat-card-avatar>
-              <div>
-                <mat-icon
-                  [svgIcon]="weatherConditionIcon[forecast.cond]"
-                  class="forecast-icon-weather"
-                ></mat-icon>
-              </div>
-            </div>
-
-            <mat-card-title> {{ forecast.location.province }} </mat-card-title>
-            <mat-card-subtitle> {{ forecast.time }} </mat-card-subtitle>
-          </mat-card-header>
-
-          <mat-card-content>
-            <div>
-              <mat-icon
-                svgIcon="thermometer"
-                color="primary"
-                aria-label="อุณหภูมิ(องศา)"
-              ></mat-icon
-              ><span>{{ forecast.tc }}</span>
-              &#8451;
-            </div>
-            <div>
-              <!-- <mat-icon>water-percent</mat-icon> -->
-              <mat-icon
-                svgIcon="water-percent"
-                color="primary"
-                aria-label="ความชื้นสัมพัทธเฉลี่ย"
-              ></mat-icon
-              ><span>{{ forecast.rh }} %</span>
-            </div>
-
-            <div fxLayout="row">
-              <span>สภาพอากาศ: &nbsp; </span>
-              <!-- <p *ngIf="forecast.cond === 1">ปลอดโปร่ง</p>
-              <p *ngIf="forecast.cond === 2">มีเมฆเล็กน้อย</p>
-              <p *ngIf="forecast.cond === 3">มีเมฆมาก</p> -->
-              <p>{{ weatherCondition[forecast.cond] }}</p>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-button color="primary">
-              {{ "full report" | uppercase }}
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
+      <ng-container *ngIf="user; else elseTemplate">
+        <h1 class="mat-display-4">Logged in as: {{ user }}.</h1>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <h1 class="mat-display-4">Please login!</h1>
+        <h1 class="mat-display-2">
+          With GitHub: <a href="http://localhost:9000/oauth2/authorization/github">click here</a>
+        </h1>
+      </ng-template>
     </div>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HistoryComponent } from './modules/history/history.component';
 import { IndexComponent } from './modules/index/index.component';
+import { WeatherForecastComponent } from './modules/weather-forecast/weather-forecast.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'history',
     component: HistoryComponent
+  },
+  {
+    path: 'weather-forecast',
+    component: WeatherForecastComponent
   }
 ];
 

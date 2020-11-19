@@ -9,12 +9,14 @@ import {
   WEATHER_CONDITION,
   WEATHER_CONDITION_ICON,
 } from '../../mock/weather-condition';
+
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css'],
+  selector: 'app-weather-forecast',
+  templateUrl: './weather-forecast.component.html',
+  styleUrls: ['./weather-forecast.component.css']
 })
-export class IndexComponent implements OnInit {
+export class WeatherForecastComponent implements OnInit {
+
   loading: boolean;
   myControl = new FormControl();
   options = THAI_PROVINCES;
@@ -23,10 +25,6 @@ export class IndexComponent implements OnInit {
   forecast: WeatherForecast;
   weatherCondition = WEATHER_CONDITION;
   weatherConditionIcon = WEATHER_CONDITION_ICON;
-  user: string = null
-
-
-
   @Input() title: string;
 
   constructor(private forecastService: ForecastService) {}
@@ -68,4 +66,5 @@ export class IndexComponent implements OnInit {
   getTitle(): void {
     this.title = 'din-app';
   }
+
 }

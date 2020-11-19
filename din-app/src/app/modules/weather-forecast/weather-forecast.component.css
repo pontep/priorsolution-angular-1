@@ -1,0 +1,64 @@
+svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+  
+  .example-card {
+    max-width: auto;
+  }
+  .example-full-width{
+    max-width: auto;
+  }
+  .example-header-image {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+  }
+  .child-1 {
+    background-color: lightpink;
+    width: 100%;
+  }
+  .child-2 {
+    background-color: yellow;
+  }
+  .child-3 {
+    background-color: green;
+  }
+  
+  .container {
+    margin: 15px;
+    height: 200px;
+    border: 2px solid red;
+  }
+  
+  .din-color{
+    background-color: lightsalmon;
+  }
+  .mat-grid-tile {
+    background: lightblue;
+  }
+  .max-width{
+    width: 100%;
+  }
+  .forecast-button{
+    width: 100%;
+    margin-top: 2%;
+  }
+  .forecast-card{
+    margin-top: 20px;
+  }
+  .forecast-icon-weather{
+    height: 48px;
+    width: 48px;
+  }
+  .forecast-icon-weather-sunny{
+    color: darkorange;
+  }
+  .forecast-icon-weather-cloudy{
+    color: lightskyblue;
+  }
+  .forecast-icon-weather-partly-cloudy{
+    color: darkorange;
+  }

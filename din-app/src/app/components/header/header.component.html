@@ -1,15 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row fxLayoutAlign="space-between center">
     <div fxLayout="row">
-      <button mat-button class="logo">
+      <button mat-button class="logo" (click)="handleToHomePage()">
         <mat-icon>home</mat-icon>
         <span>{{ title }}</span>
       </button>
       <div *ngIf="!deviceXs" fxLayoutAlign="space-between">
-        <button mat-button (click)="handleToHomePage()">Home</button>
-        <button mat-button (click)="handleToHistoryPage()">History</button>
-        <button mat-button>Contact us</button>
-        <button mat-button>About us</button>
+        <button mat-button (click)="handleToWeatherForecastPage()">Weather Forecast</button>
+        <button mat-button (click)="handleToHistoryPage()">Weather Forecast History</button>
       </div>
     </div>
     <div>

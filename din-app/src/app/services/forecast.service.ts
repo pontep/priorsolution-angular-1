@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { WeatherForecast } from '../models/weatherForecast';
-import {FORECAST} from '../models/mock-forecast'
+// import {FORECAST} from '../models/mock-forecast'
 import { Location } from '../models/location';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class ForecastService {
   });
   
   private baseUrl = 'http://localhost:9000/api/'
-  private forecastUrl = this.baseUrl + 'weatherforecast/'
+  private forecastUrl = this.baseUrl + 'weather-forecast/'
   private locationUrl = this.baseUrl + 'locations/'
   constructor(private http: HttpClient) { }
 
