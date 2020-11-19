@@ -12,8 +12,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { DomSanitizer } from '@angular/platform-browser';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 const MaterialComponents = [
+  MatProgressSpinnerModule,
   MatFormFieldModule,
   MatSliderModule,
   MatButtonModule,
@@ -26,7 +29,8 @@ const MaterialComponents = [
   ReactiveFormsModule,
   MatProgressBarModule,
   MatSelectModule,
-  MatGridListModule
+  MatGridListModule,
+  MatSnackBarModule
 ]
 @NgModule({
   imports: [

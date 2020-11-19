@@ -17,17 +17,17 @@
                 formControlName="email"
                 required
               />
-              <small *ngIf="email.invalid && email.touched" id="emailHelp" class="form-text " style="color: red;"
-                >
+              <small
+                *ngIf="email.invalid && email.touched"
+                id="emailHelp"
+                class="form-text"
+                style="color: red"
+              >
                 <ng-container *ngIf="!email.value; else elseTemplate">
                   * Required!
                 </ng-container>
-                <ng-template #elseTemplate>
-                  * Email is invalid! 
-                </ng-template>
-                
-                </small
-              >
+                <ng-template #elseTemplate> * Email is invalid! </ng-template>
+              </small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -38,8 +38,11 @@
                 formControlName="password"
                 required
               />
-              
-              <small *ngIf="password.invalid && password.touched" class="form-text " style="color: red;"
+
+              <small
+                *ngIf="password.invalid && password.touched"
+                class="form-text"
+                style="color: red"
                 >* Required!</small
               >
             </div>
@@ -48,6 +51,7 @@
                 type="checkbox"
                 class="form-check-input"
                 id="exampleCheck1"
+                formControlName="rememberMe"
               />
               <label class="form-check-label" for="exampleCheck1"
                 >Remember me</label
@@ -56,17 +60,18 @@
             <button
               type="submit"
               class="btn btn-primary"
-              style="width: 100%;"
-              [disabled]="this.loginForm.invalid"
+              style="width: 100%"
+              [disabled]="this.loginForm.invalid || loading"
             >
               Login
             </button>
+            <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+            <!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
           </form>
         </div>
       </div>
     </div>
-  
+
     <div class="col"></div>
   </div>
-  
 </div>
