@@ -1,6 +1,7 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col"></div>
+    
     <div class="col-6">
       <div class="card" style="width: 100%rem">
         <!-- <img src="..." class="card-img-top" alt="..."> -->
@@ -34,11 +35,14 @@
                     formControlName="value1"
                     required
                   />
+                  <div *ngIf="value1.invalid && value1.touched">
+                    <small class="form-text" style="color: red;">* Error</small>
+                  </div>
                 </div>
               </div>
               <div class="col">
                 <div class="form-group">
-                  <label for="exampleInputMonth">Value 1</label>
+                  <label for="exampleInputMonth">Value 2</label>
                   <input
                     type="number"
                     class="form-control"
@@ -47,11 +51,11 @@
                     formControlName="value2"
                     required
                   />
+                  <div *ngIf="value2.invalid && value2.touched">
+                    <small class="form-text" style="color: red;">* Error</small>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div *ngIf="exampleValidateForm.invalid && exampleValidateForm.touched">
-              <h2 style="color: red;">ERROR</h2>
             </div>
             <button
               type="submit"
@@ -59,7 +63,7 @@
               style="width: 100%"
               [disabled]="this.exampleValidateForm.invalid || loading"
             >
-              Submit
+              {{ this.exampleValidateForm.status }}
             </button>
             <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
           </form>
@@ -71,4 +75,3 @@
   </div>
 </div>
 
-{{ exampleValidateForm.status }}

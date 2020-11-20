@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
+  FormBuilder,
   FormControl,
   FormGroup,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 import { RxwebValidators } from '@rxweb/reactive-form-validators';
@@ -13,17 +12,18 @@ import { RxwebValidators } from '@rxweb/reactive-form-validators';
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.css'],
 })
+
 export class ExampleComponent implements OnInit {
   loading: boolean;
   exampleValidateForm: FormGroup;
 
-  constructor() {}
+  constructor(private formBuild: FormBuilder) {}
 
   ngOnInit(): void {
-    this.exampleValidateForm = new FormGroup({
-      value1: new FormControl('', [Validators.required]),
-      value2: new FormControl('', [Validators.required]),
+    this.exampleValidateForm = this.formBuild.group({
       compareType: new FormControl('', [Validators.required]),
+      value1: new FormControl(''),
+      value2: new FormControl('')
     });
   }
   onSubmit() {
@@ -35,16 +35,49 @@ export class ExampleComponent implements OnInit {
   }
 
   handleCompare() {
+    this.exampleValidateForm.clearValidators();
     switch (this.compareType.value) {
       case 'Greater than':
-        console.log('Greater than');
-        this.exampleValidateForm.get("value1").setValidators([RxwebValidators])
+        this.exampleValidateForm.get('value1').setValidators([
+          RxwebValidators.greaterThan({
+            fieldName: 'value2',
+          }),
+        ]);
+        this.exampleValidateForm.get('value2').setValidators([
+          RxwebValidators.lessThan({
+            fieldName: 'value1',
+          }),
+        ]);
         break;
       case 'Less than':
-        console.log('Less than');
+        this.exampleValidateForm.get('value1').setValidators([
+          RxwebValidators.lessThan({
+            fieldName: 'value2',
+          }),
+        ]);
+        this.exampleValidateForm.get('value2').setValidators([
+          RxwebValidators.greaterThan({
+            fieldName: 'value1',
+          }),
+        ]);
         break;
       case 'Equal':
-        console.log('Equal');
+        this.exampleValidateForm.get('value1').setValidators([
+          RxwebValidators.lessThanEqualTo({
+            fieldName: 'value2',
+          }),
+          RxwebValidators.greaterThanEqualTo({
+            fieldName: 'value2',
+          }),
+        ]);
+        this.exampleValidateForm.get('value2').setValidators([
+          RxwebValidators.lessThanEqualTo({
+            fieldName: 'value1',
+          }),
+          RxwebValidators.greaterThanEqualTo({
+            fieldName: 'value1',
+          }),
+        ]);
         break;
       default:
         console.log('Default case');

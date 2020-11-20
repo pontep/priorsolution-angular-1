@@ -1,13 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './modules/index/index.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { ForecastFormComponent } from './components/forecast-form/forecast-form.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
@@ -25,6 +23,7 @@ import { WeatherForecastComponent } from './modules/weather-forecast/weather-for
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginGuard } from './services/login.guard';
 import { ExampleComponent } from './modules/example/example.component';
+import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 @NgModule({
   declarations: [
@@ -52,7 +51,8 @@ import { ExampleComponent } from './modules/example/example.component';
     MatButtonModule,
     LayoutModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    RxReactiveFormsModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]
