@@ -8,7 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForecastFormComponent } from './components/forecast-form/forecast-form.component';
 import { MaterialModule } from './material/material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -23,7 +23,8 @@ import { WeatherForecastComponent } from './modules/weather-forecast/weather-for
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginGuard } from './services/login.guard';
 import { ExampleComponent } from './modules/example/example.component';
-import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
+import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators";
+import { R64Component } from './modules/r64/r64.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     DashboardComponent,
     HistoryComponent,
     WeatherForecastComponent,
-    ExampleComponent
+    ExampleComponent,
+    R64Component
   ],
   imports: [
     BrowserModule,
@@ -44,15 +46,11 @@ import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
     LayoutModule,
     HttpClientModule,
     NgbModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [LoginGuard],
   bootstrap: [AppComponent]

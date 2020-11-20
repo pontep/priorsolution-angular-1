@@ -1,6 +1,15 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col"></div>
+    <div class="col">
+      <div>
+        <h1> {{ form.status }} </h1>
+      <form [formGroup]="form">
+        <input formControlName="rangeStart" placeholder="Range start" type="number">
+        <input formControlName="rangeEnd" placeholder="Range end" type="number">
+      </form>
+      <div> Valid: {{ form.valid ? '👍' : '👎' }} </div>
+      </div>
+    </div>
     
     <div class="col-6">
       <div class="card" style="width: 100%rem">

@@ -21,7 +21,6 @@ const MaterialComponents = [
   MatSliderModule,
   MatButtonModule,
   MatIconModule,
-  MatFormFieldModule,
   MatInputModule,
   MatCardModule,
   MatToolbarModule,
@@ -29,8 +28,9 @@ const MaterialComponents = [
   ReactiveFormsModule,
   MatProgressBarModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatGridListModule,
-  MatSnackBarModule
+
 ]
 @NgModule({
   imports: [
