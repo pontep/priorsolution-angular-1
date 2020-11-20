@@ -1,0 +1,50 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col-6">
+        <div class="card" style="width: 100%rem">
+          <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <h1 class="card-title">Login</h1>
+            <form [formGroup]="exampleValidateForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="exampleInputMonth">Month</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="exampleInputMonth"
+                  aria-describedby="monthHelp"
+                  formControlName="month"
+                  required
+                />
+                <small
+                  *ngIf="month.invalid && month.touched"
+                  id="emailHelp"
+                  class="form-text"
+                  style="color: red"
+                >
+                  <ng-container *ngIf="!month.value; else elseTemplate">
+                    * Please enter a month between 1 and 11!
+                  </ng-container>
+                  <ng-template #elseTemplate> * Month is invalid (1-11)! </ng-template>
+                </small>
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%"
+                [disabled]="this.exampleValidateForm.invalid || loading"
+              >
+                Login
+              </button>
+              <mat-progress-bar *ngIf="loading" mode="query"></mat-progress-bar>
+              <!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col"></div>
+    </div>
+  </div>
+  

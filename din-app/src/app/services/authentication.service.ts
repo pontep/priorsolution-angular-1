@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { User } from '../models/user';
 
 @Injectable({
@@ -19,5 +19,19 @@ export class AuthenticationService {
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
   }
-  
+  public isAuthenticated(){
+    if (!this.currentUserValue){
+      return false
+    }  
+    return true
+  }
+  public login(email: string, password: string): Observable<any>{
+    let user = JSON.stringify({
+      email: email,
+      password: password
+    })
+    sessionStorage.setItem('currentUser', user)
+    return of(true)
+  }
+
 }

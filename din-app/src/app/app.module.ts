@@ -23,6 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HistoryComponent } from './modules/history/history.component';
 import { WeatherForecastComponent } from './modules/weather-forecast/weather-forecast.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginGuard } from './services/login.guard';
+import { ExampleComponent } from './modules/example/example.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ForecastFormComponent,
     DashboardComponent,
     HistoryComponent,
-    WeatherForecastComponent
+    WeatherForecastComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
